@@ -1,10 +1,9 @@
 
-import {Class} from '../models/class.model.js'; // Ensure path is correct
+import {Class} from '../models/class.model.js'; 
 
-// Handler to create a new class
 export const createClass = async (req, res) => {
   try {
-    const { name, description, files = [] } = req.body; // Default to empty array if files are not provided
+    const { name, description, files = [] } = req.body; 
 
     const newClass = new Class({
       name,
@@ -20,7 +19,7 @@ export const createClass = async (req, res) => {
   }
 };
 
-// Handler to list all classes
+
 export const getClasses = async (req, res) => {
   try {
     const classes = await Class.find();
@@ -30,11 +29,10 @@ export const getClasses = async (req, res) => {
   }
 };
 
-// Handler to enroll a user in a class
 export const enrollInClass = async (req, res) => {
   try {
     const { classId } = req.body;
-    const userId = req.user.id; // Extract user ID from the authenticated request
+    const userId = req.user.id;
 
     if (!userId) {
       return res.status(401).json({ message: 'User not authenticated' });
@@ -73,7 +71,7 @@ export const uploadFileToClass = async (req, res) => {
       return res.status(404).json({ message: 'Class not found' });
     }
 
-    // Add file details to the class
+    
     const fileData = {
       filename: file.filename,
       fileUrl: `/uploads/${file.filename}`

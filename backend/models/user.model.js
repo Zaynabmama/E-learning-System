@@ -4,6 +4,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   enrolledClasses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Class' }],
+  role: { type: String, enum: ['student', 'admin'], default: 'student' },
 });
 
 
