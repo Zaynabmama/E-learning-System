@@ -1,0 +1,37 @@
+.admin-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f9;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.main-content header {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.main-content header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+.content {
+  padding: 20px 0;
+}
+
+.class-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loading,
+.error {
+  margin-top: 20px;
+  color: #ff0000;
+}

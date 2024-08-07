@@ -22,3 +22,8 @@
 .login-form button {
   align-self: center;
 }
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+

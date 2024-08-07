@@ -1,27 +1,23 @@
-import React from 'react';
 
-const AdminPanel = () => {
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import './AdminPage.css';
+
+const AdminPage = () => {
   return (
-    <div>
-      <h2>Admin Dashboard</h2>
-      <div>
-        <h3>Add Classes</h3>
-       
-      </div>
-      <div>
-        <h3>List Students</h3>
-       
-      </div>
-      <div>
-        <h3>Upload Files</h3>
-      
-      </div>
-      <div>
-        <h3>Manage Withdrawals</h3>
-        
+    <div className="admin-container">
+      <Sidebar />
+      <div className="main-content">
+        <header>
+          <h1>Admin Dashboard</h1>
+        </header>
+        <Outlet /> 
       </div>
     </div>
   );
 };
 
-export default AdminPanel;
+export default AdminPage;
+
+

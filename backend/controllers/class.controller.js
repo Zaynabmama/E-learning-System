@@ -1,5 +1,7 @@
 
-import {Class} from '../models/class.model.js'; 
+import {Class} from '../models/class.model.js';
+import {User} from '../models/user.model.js';
+
 
 export const createClass = async (req, res) => {
   try {
@@ -19,6 +21,22 @@ export const createClass = async (req, res) => {
   }
 };
 
+export const getClassById = async (req, res) => {
+  try {
+    const { classId } = req.params;
+    const classDetails = await Class.findById(classId).populate('students', 'username');
+
+    if (!classDetails) {
+      return res.status(404).json({ message: 'Class not found' });
+    }
+
+    res.json(classDetails);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching class details', error: error.message });
+  }
+};
+
+
 
 export const getClasses = async (req, res) => {
   try {
@@ -28,6 +46,7 @@ export const getClasses = async (req, res) => {
     res.status(500).json({ message: 'Error fetching classes', error: error.message });
   }
 };
+
 
 export const enrollInClass = async (req, res) => {
   try {
@@ -43,6 +62,11 @@ export const enrollInClass = async (req, res) => {
       return res.status(404).json({ message: 'Class not found' });
     }
 
+    const userToUpdate = await User.findById(userId);
+    if (!userToUpdate) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     if (classToUpdate.students.includes(userId)) {
       return res.status(400).json({ message: 'User is already enrolled in this class' });
     }
@@ -50,7 +74,11 @@ export const enrollInClass = async (req, res) => {
     classToUpdate.students.push(userId);
     await classToUpdate.save();
 
-    res.json(classToUpdate);
+  
+    userToUpdate.enrolledClasses.push(classId);
+    await userToUpdate.save();
+
+    res.json({ class: classToUpdate, user: userToUpdate });
   } catch (error) {
     res.status(400).json({ message: 'Error enrolling in class', error: error.message });
   }

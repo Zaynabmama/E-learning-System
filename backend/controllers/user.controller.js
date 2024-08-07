@@ -37,18 +37,32 @@ export const loginUser = async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign
-    ({
-       id: user._id,
-       role: user.role 
-       },
-        process.env.JWT_SECRET
-        , {
-           expiresIn: '1h' 
-          });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
 
-    res.json({ token });
+
+    res.json({ token, role: user.role });
   } catch (error) {
     res.status(500).json({ message: 'Error logging in', error: error.message });
+  }
+};
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find().populate('enrolledClasses', 'name description');
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching users', error: error.message });
+  }
+};
+export const deleteUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    await User.findByIdAndDelete(userId);
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting user', error: error.message });
   }
 };

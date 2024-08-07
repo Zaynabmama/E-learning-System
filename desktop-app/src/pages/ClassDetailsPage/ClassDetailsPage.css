@@ -1,0 +1,92 @@
+
+.class-details-page {
+    font-family: 'Arial, sans-serif';
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+  }
+  
+  .class-details-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+   
+  }
+  
+  .class-details-container header {
+    background: #0066cc;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .class-details-container header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  .class-details-container h2, 
+  .class-details-container h3 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .class-details-container p {
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  .class-details-container .enrolled-students, 
+  .class-details-container .uploaded-files {
+    margin-top: 20px;
+  }
+  
+
+  .class-details-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .class-details-container li {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 6px;
+   
+  }
+  
+  .class-details-container li:hover {
+    background: #f1f1f1;
+    }
+
+  .class-details-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .class-details-container a:hover {
+    text-decoration: underline;
+  }
+  
+  .class-details-container button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    
+  }
+  
+  .class-details-container button:hover {
+    background-color: #218838;
+    transform: scale(1.02);
+  }
+ 
+  .class-details-container .loading, 
+  .class-details-container .error {
+    text-align: center;
+    color: #ff4d4d;
+    font-size: 1.2em;
+  }
+  
