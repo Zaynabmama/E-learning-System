@@ -7,7 +7,7 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import ClassDetailsPage from './pages/ClassDetailsPage/ClassDetailsPage';
 import ManageClassesPage from './pages/ManageClassesPage/ManageClassesPage';
 import ListStudentsPage from './pages/ListStudentsPage/ListStudentsPage';
-import UploadFilesPage from './pages/UploadFilesPage/UploadFilesPage';
+import FileUploadPage from './pages/FileUploadPage';
 import ManageWithdrawalsPage from './pages/ManageWithdrawalsPage/ManageWithdrawalsPage';
 import store from './datasources/redux/store';
 import './App.css';
@@ -28,7 +28,7 @@ function App() {
             >
               <Route path="classes" element={<ManageClassesPage />} />
               <Route path="students" element={<ListStudentsPage />} />
-              <Route path="uploads" element={<UploadFilesPage />} />
+              <Route path="uploads" element={<FileUploadPage />} />
               <Route path="withdrawals" element={<ManageWithdrawalsPage />} />
               <Route path="" element={<Navigate to="classes" />} /> {/* Default redirect */}
             </Route>
